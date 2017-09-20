@@ -5,5 +5,5 @@ const data = [
   ];
 
 var spark = new Sparklines("#elm", data, {
-  type:"bar",
+  renderer:"bar",
 });

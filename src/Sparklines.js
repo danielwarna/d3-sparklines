@@ -1,30 +1,27 @@
 import * as d3 from "d3";
+import Barchart from "./Barchart.js";
 
 class Sparklines {
 	constructor(selector, data, config) {
 		console.log("New sparkline");
+
+		this.data = data;
+		this.config = config;
+		this.chart = null;
 		var elem = d3.select(selector);
 
-		let svg = elem.append("svg").append("g");
+		let svg = this.svg = elem.append("svg");
 
-		let height = 16;
-		let scale =d3.scaleLinear()
-			.domain([0, d3.max(data)])
-			.range([0, height]);
+		this.config.height = this.height = 16;
 
-		var heightFunc = function(h) {
-			return scale(h)+"px";
-		};
 
-		svg.selectAll('rect').data(data)
-			.enter().append("rect")
-				.attr("width","3px")
-				.attr("height", heightFunc)
-				.attr("x", function(d, i) { return i*4;})
-				.attr("y", function(d, i) { return 0+height-scale(d);})
-				.style("fill", "red");
+		this.loadChart();
+	}
 
-		svg.data(data);
+	loadChart() {
+		if (this.config.type = "barchart") {
+			this.chart = new Barchart(this.svg, this.data, this.config);
+		}
 
 	}
 }
