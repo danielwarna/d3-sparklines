@@ -1,0 +1,74 @@
+{
+  "private": true,
+  "name": "sparklines",
+  "version": "0.0.1",
+  "description": "d3 sparklines",
+  "author": "Daniel Wärnå <daniel@danielwarna.com> (http://www.danielwarna.com)",
+  "contributors": [
+    "Daniel Wärnå <daniel@danielwarna.com>"
+  ],
+  "license": "MIT",
+  "keywords": [],
+  "main": "src/index.js",
+  "jsnext:main": "index.es.js",
+  "babel": {
+    "presets": [
+      "latest",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ]
+  },
+  "eslintConfig": {
+    "extends":"eslint:recommended",
+    "parserOptions": { 
+      "ecmaVersion": 6,
+      "sourceType":"module"
+    },
+    "env": {
+      "es6": true
+    },
+    "rules": {
+      "indent": [
+        "warn",
+        "tab"
+      ],
+      "linebreak-style": [
+        "off",
+        "unix"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "curly": "error",
+      "comma-dangle": ["off", "always"]
+    }  
+  },
+  "dependencies": {
+    "babel-loader": "^7.1.2",
+    "babel-runtime": "^6.11.6",
+    "d3": "^4.10.2",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.17.0",
+    "babel-eslint": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.16.3",
+    "eslint": "^3.8.0",
+    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "webpack-dev-server": "^2.8.2"
+  },
+  "scripts": {
+    "lint": "eslint src test tools",
+    "dev": "webpack-dev-server"
+  }
+}
