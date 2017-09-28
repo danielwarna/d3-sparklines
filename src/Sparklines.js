@@ -7,22 +7,46 @@ class Sparklines {
 
 		this.data = data;
 		this.config = config;
-		this.chart = null;
+		this._renderers = [];
 		var elem = d3.select(selector);
 
 		let svg = this.svg = elem.append("svg");
 
 		this.config.height = this.height = 16;
+		this.config.renderer = config.renderer || "bar";
 
+		let chartRenderer = this.getRenderer(this.config.renderer);
+		chartRenderer = new chartRenderer(this.svg, this.data, this.config);
 
-		this.loadChart();
+		this._renderers.push(chartRenderer);
+		// this.loadChart();
+		// 
+		this.render();
 	}
 
 	loadChart() {
 		if (this.config.type = "barchart") {
 			this.chart = new Barchart(this.svg, this.data, this.config);
 		}
+	}
 
+	getRenderer(renderer) {
+		switch(renderer) {
+			case "bar":
+				return Barchart;
+			case "line":
+				break;
+			case "number":
+				break;
+			case "scatter":
+				break;
+		}
+	}
+
+	render(){
+		this._renderers.forEach((r) => {
+			r.render();
+		});
 	}
 }
 
