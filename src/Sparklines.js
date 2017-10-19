@@ -16,7 +16,7 @@ class Sparklines {
 		this.config.renderer = config.renderer || "bar";
 
 		let chartRenderer = this.getRenderer(this.config.renderer);
-		chartRenderer = new chartRenderer(this.svg, this.data, this.config);
+		chartRenderer = new chartRenderer(this.svg.append('g'), this.data, this.config);
 
 		this._renderers.push(chartRenderer);
 		// this.loadChart();
@@ -44,8 +44,10 @@ class Sparklines {
 	}
 
 	render(){
+		let offset = 0;
 		this._renderers.forEach((r) => {
-			r.render();
+			r.render(offset);
+			offset += r.getOffset();
 		});
 	}
 }

@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 
-class Barchart {
+class NumberLabel {
     constructor(element, data, config) {
         console.log("New sparkline");
         let self = this;
