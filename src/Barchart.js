@@ -5,7 +5,7 @@ class Barchart {
         console.log("New sparkline");
         let self = this;
 
-        let height = 16;
+        let height = config.height;
         let scale =d3.scaleLinear()
             .domain([0, d3.max(data)])
             .range([0, height]);
@@ -24,7 +24,10 @@ class Barchart {
                 .attr("y", function(d, i) { return 0+config.height-scale(d);})
                 .style("fill", "red");
 
-        svg.append("g").append("text").text(data[data.lenght -1]);
+        svg.append("g")
+            .append("text")
+            .text(data[data.length -1])
+            .style("fill", "red");
         
         svg.data(data);
 
