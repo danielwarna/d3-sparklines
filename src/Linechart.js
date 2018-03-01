@@ -5,12 +5,16 @@ class Linechart {
         console.log("New sparkline");
         let self = this;
 
+        this.svg = svg;
+        this.data = data;
+        this.config = config;
+
         let height = config.height;
         let scale =d3.scaleLinear()
             .domain([0, d3.max(data)])
             .range([0, height]);
 
-        let l = d3.line(data)
+        this.lineRender = d3.line(data)
             .x((i,j) => {
                 return j*4;
             })
@@ -21,22 +25,33 @@ class Linechart {
 
         svg.append("g").append("text").text(data[0]);
 
-        svg.append("g").selectAll('path')
-            .data(data)
-            .enter().append("svg:path")
-                // .attr("width","3px")
-                // .attr("height", heightFunc)
-                // .attr("x", function(d, i) { return i*4;})
-                // .attr("y", function(d, i) { return 0+config.height-scale(d);})
-                .attr("d", l(data))
-                .style("stroke", "red")
-                .style("fill", "none")
 
         svg.append("g").append("text").text(data[data.lenght -1]);
         
-        svg.data(data);
+    }
+    
+    render() {
+        this.svg.append("g").selectAll('path')
+            .data(this.data)
+            .enter().append("svg:path")
+            // .attr("width","3px")
+            // .attr("height", heightFunc)
+            // .attr("x", function(d, i) { return i*4;})
+            // .attr("y", function(d, i) { return 0+config.height-scale(d);})
+            .attr("d", this.lineRender(this.data))
+            .style("stroke", "red")
+            .style("fill", "none");
+        
+        this.svg.data(this.data);
+    }
 
-
+    /**
+     * Return bound box size;
+     * @return {[type]} [description]
+     */
+    getOffset() {
+        return 100;
+        // return this.svg.selectAll("rect")[0].getBBox().width;
     }
 }
 

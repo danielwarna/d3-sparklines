@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 
-class Barchart {
+class NumberLabel {
     constructor(element, data, config) {
         console.log("New sparkline");
         let self = this;
@@ -9,7 +9,7 @@ class Barchart {
         this.data = data;
         this.config = config;
 
-        let height = config.height;
+        let height = 16;
         this.scale =d3.scaleLinear()
             .domain([0, d3.max(data)])
             .range([0, height]);

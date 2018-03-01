@@ -5,9 +5,9 @@ const data = [
 ];
 
 var spark = new Sparklines("#elm", data, {
-  renderer:"barchart",
+  renderer:"bar",
 });
 
 var line = new Sparklines("#line", data, {
-  renderer:"linechart"
+  renderer:"line"
 });
