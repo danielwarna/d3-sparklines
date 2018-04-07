@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Sparklines from "./Sparklines.js";
 
 const data = [

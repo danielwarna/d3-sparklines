@@ -12,7 +12,7 @@ class Sparklines {
         this._renderers = [];
         var elem = d3.select(selector);
 
-        let svg = this.svg = elem.append("svg");
+        this.svg = elem.append("svg");
 
         this.config.height = this.height = 16;
         this.config.renderer = config.renderer || "bar";
@@ -62,7 +62,7 @@ class Sparklines {
 
     render(){
         let offset = 0;
-        this._renderers.forEach((r, idx) => {
+        this._renderers.forEach((r) => {
             r.render(offset);
             offset += r.getWidth();
         });

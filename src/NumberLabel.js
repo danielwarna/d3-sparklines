@@ -23,8 +23,8 @@ class NumberLabel {
         .enter().append("text")
         .attr("width","3px")
         .attr("height", this.heightFunc)
-        .attr("x", function(d, i) { return i*4;})
-        .attr("y", (d, i) => { return this.config.height;})
+        .attr("x", (d, i) => { return i*4;})
+        .attr("y", () => { return this.config.height;})
         .text((d) => {return d} )
         .style("fill", "red");
         

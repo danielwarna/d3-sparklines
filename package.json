@@ -71,7 +71,7 @@
     "webpack-dev-server": "^2.8.2"
   },
   "scripts": {
-    "lint": "eslint src test tools",
+    "lint": "./node_modules/.bin/eslint src test tools",
     "dev": "webpack-dev-server"
   }
 }

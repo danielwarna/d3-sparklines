@@ -3,7 +3,6 @@ import * as d3 from "d3";
 class Barchart {
     constructor(element, data, config) {
         console.log("New sparkline");
-        let self = this;
 
         this.svg = element;
         this.data = data;
@@ -24,8 +23,8 @@ class Barchart {
             .enter().append("rect")
                 .attr("width","3px")
                 .attr("height", this.heightFunc)
-                .attr("x", function(d, i) { return i*4;})
-                .attr("y", (d, i) => { return 0+this.config.height-this.scale(d);})
+                .attr("x", (d, i) => { return i*4;})
+                .attr("y", (d) => { return 0+this.config.height-this.scale(d);})
                 .style("fill", "red");
 
         this.svg.data(this.data);
