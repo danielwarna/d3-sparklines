@@ -28,7 +28,6 @@ class NumberLabel {
         .text((d) => {return d} )
         .style("fill", "red");
         
-        // this.svg.data(this.data);
         this.svg.attr("transform", "translate(" + offset + "," + 0 + ")")
     }
 
@@ -39,8 +38,6 @@ class NumberLabel {
     getWidth() {
         var bBox = this.svg.node().getBoundingClientRect();
         return bBox.width;
-        // return 100;
-        // return this.svg.selectAll("rect")[0].getBBox().width;
     }
 }
 

@@ -64,7 +64,6 @@ class Sparklines {
         let offset = 0;
         this._renderers.forEach((r, idx) => {
             r.render(offset);
-            console.log("Rendering elem " + idx + " with offset " + offset + " getwidth " + r.getWidth());
             offset += r.getWidth();
         });
     }

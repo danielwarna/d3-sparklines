@@ -21,21 +21,12 @@ class Linechart {
             .y((i) => { 
                 return 0 + config.height - scale(i);
             });
-            // .curve(d3.curveCatmullRom.alpha(0.5));
-
-        // svg.append("g").append("text").text(data[0]);
-        // svg.append("g").append("text").text(data[data.length -1]);
-        
     }
     
     render(offset) {
         this.svg.selectAll('path')
             .data(this.data)
             .enter().append("svg:path")
-            // .attr("width","3px")
-            // .attr("height", heightFunc)
-            // .attr("x", function(d, i) { return i*4;})
-            // .attr("y", function(d, i) { return 0+config.height-scale(d);})
             .attr("d", this.lineRender(this.data))
             .style("stroke", "red")
             .style("fill", "none");

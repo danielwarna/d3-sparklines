@@ -17,9 +17,6 @@ class Barchart {
         this.heightFunc = (h) => {
             return this.scale(h)+"px";
         };
-
-        // element.append("g").append("text").text(data[0]);
-        // element.append("g").append("text").text(data[data.length -1]);
     }
 
     render(offset) {
@@ -44,8 +41,6 @@ class Barchart {
     getWidth() {
         var bBox = this.svg.node().getBoundingClientRect();
         return bBox.width;
-        // return this.data.length * 4;
-        // return this.svg.selectAll("rect")[0].getBBox().width;
     }
 }
 
