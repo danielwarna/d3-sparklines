@@ -1,3 +1,3 @@
-export Sparklines from './Sparklines.js';
+// export Sparklines from './Sparklines.js';
 
 import "./demo.js";

@@ -18,14 +18,11 @@ class Barchart {
             return this.scale(h)+"px";
         };
 
-        element.append("g").append("text").text(data[0]);
-
-        
-        element.append("g").append("text").text(data[data.lenght -1]);
-        
+        // element.append("g").append("text").text(data[0]);
+        // element.append("g").append("text").text(data[data.length -1]);
     }
 
-    render() {
+    render(offset) {
         this.svg.selectAll('rect').data(this.data)
             .enter().append("rect")
                 .attr("width","3px")
@@ -35,14 +32,19 @@ class Barchart {
                 .style("fill", "red");
 
         this.svg.data(this.data);
+
+        this.svg.attr("transform", "translate(" + offset + "," + 0 + ")")
+
     }
 
     /**
      * Return bound box size;
      * @return {[type]} [description]
      */
-    getOffset() {
-        return 100;
+    getWidth() {
+        var bBox = this.svg.node().getBoundingClientRect();
+        return bBox.width;
+        // return this.data.length * 4;
         // return this.svg.selectAll("rect")[0].getBBox().width;
     }
 }

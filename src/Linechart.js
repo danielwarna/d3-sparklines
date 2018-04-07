@@ -3,7 +3,7 @@ import * as d3 from "d3";
 class Linechart {
     constructor(svg, data, config) {
         console.log("New sparkline");
-        let self = this;
+        // let self = this;
 
         this.svg = svg;
         this.data = data;
@@ -23,15 +23,13 @@ class Linechart {
             });
             // .curve(d3.curveCatmullRom.alpha(0.5));
 
-        svg.append("g").append("text").text(data[0]);
-
-
-        svg.append("g").append("text").text(data[data.lenght -1]);
+        // svg.append("g").append("text").text(data[0]);
+        // svg.append("g").append("text").text(data[data.length -1]);
         
     }
     
-    render() {
-        this.svg.append("g").selectAll('path')
+    render(offset) {
+        this.svg.selectAll('path')
             .data(this.data)
             .enter().append("svg:path")
             // .attr("width","3px")
@@ -43,15 +41,18 @@ class Linechart {
             .style("fill", "none");
         
         this.svg.data(this.data);
+
+        this.svg.attr("transform", "translate(" + offset + "," + 0 + ")")
+
     }
 
     /**
      * Return bound box size;
      * @return {[type]} [description]
      */
-    getOffset() {
-        return 100;
-        // return this.svg.selectAll("rect")[0].getBBox().width;
+    getWidth() {
+        var bBox = this.svg.node().getBoundingClientRect();
+        return bBox.width;
     }
 }
 

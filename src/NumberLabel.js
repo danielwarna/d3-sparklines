@@ -2,8 +2,7 @@ import * as d3 from "d3";
 
 class NumberLabel {
     constructor(element, data, config) {
-        console.log("New sparkline");
-        let self = this;
+        console.log("New sparkline numberLabel");
 
         this.svg = element;
         this.data = data;
@@ -17,34 +16,32 @@ class NumberLabel {
         this.heightFunc = (h) => {
             return this.scale(h)+"px";
         };
-
-        element.append("g").append("text").text(data[0]);
-
-        
-        element.append("g").append("text").text(data[data.lenght -1]);
-        
     }
 
-    render() {
-        this.svg.selectAll('rect').data(this.data)
-            .enter().append("rect")
-                .attr("width","3px")
-                .attr("height", this.heightFunc)
-                .attr("x", function(d, i) { return i*4;})
-                .attr("y", (d, i) => { return 0+this.config.height-this.scale(d);})
-                .style("fill", "red");
-
-        this.svg.data(this.data);
+    render(offset) {
+        this.svg.selectAll('text').data([this.data])
+        .enter().append("text")
+        .attr("width","3px")
+        .attr("height", this.heightFunc)
+        .attr("x", function(d, i) { return i*4;})
+        .attr("y", (d, i) => { return this.config.height;})
+        .text((d) => {return d} )
+        .style("fill", "red");
+        
+        // this.svg.data(this.data);
+        this.svg.attr("transform", "translate(" + offset + "," + 0 + ")")
     }
 
     /**
      * Return bound box size;
      * @return {[type]} [description]
      */
-    getOffset() {
-        return 100;
+    getWidth() {
+        var bBox = this.svg.node().getBoundingClientRect();
+        return bBox.width;
+        // return 100;
         // return this.svg.selectAll("rect")[0].getBBox().width;
     }
 }
 
-export default Barchart;
+export default NumberLabel;
