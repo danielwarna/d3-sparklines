@@ -13,8 +13,8 @@ class NumberLabel {
             .domain([0, d3.max(data)])
             .range([0, height]);
 
-        this.heightFunc = (h) => {
-            return this.scale(h)+"px";
+        this.heightFunc = () => {
+            return height+"px";
         };
     }
 
@@ -22,11 +22,12 @@ class NumberLabel {
         this.svg.selectAll('text').data([this.data])
         .enter().append("text")
         .attr("width","3px")
-        .attr("height", this.heightFunc)
         .attr("x", (d, i) => { return i*4;})
-        .attr("y", () => { return this.config.height;})
+        .attr("y", () => { return this.config.height - 1;})
+        .attr("font-size", this.heightFunc)
+        .attr("font-family", "sans-serif")
         .text((d) => {return d} )
-        .style("fill", "red");
+        .style("fill", this.color);
         
         this.svg.attr("transform", "translate(" + offset + "," + 0 + ")")
     }
