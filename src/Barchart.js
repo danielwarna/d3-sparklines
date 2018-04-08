@@ -1,12 +1,11 @@
 import * as d3 from "d3";
+import BaseChart from "./Basechart";
 
-class Barchart {
+class Barchart extends BaseChart{
     constructor(element, data, config) {
-        console.log("New sparkline");
+        super(element, data, config);
 
-        this.svg = element;
-        this.data = data;
-        this.config = config;
+        console.log("New sparkline");
 
         let height = config.height;
         this.scale =d3.scaleLinear()
@@ -31,15 +30,6 @@ class Barchart {
 
         this.svg.attr("transform", "translate(" + offset + "," + 0 + ")")
 
-    }
-
-    /**
-     * Return bound box size;
-     * @return {[type]} [description]
-     */
-    getWidth() {
-        var bBox = this.svg.node().getBoundingClientRect();
-        return bBox.width;
     }
 }
 

@@ -1,13 +1,9 @@
 import * as d3 from "d3";
+import BaseChart from "./Basechart";
 
-class Linechart {
-    constructor(svg, data, config) {
-        console.log("New sparkline");
-        // let self = this;
-
-        this.svg = svg;
-        this.data = data;
-        this.config = config;
+class Linechart extends BaseChart {
+    constructor(element, data, config) {
+        super(element, data, config);
 
         let height = config.height;
         let scale =d3.scaleLinear()
@@ -35,15 +31,6 @@ class Linechart {
 
         this.svg.attr("transform", "translate(" + offset + "," + 0 + ")")
 
-    }
-
-    /**
-     * Return bound box size;
-     * @return {[type]} [description]
-     */
-    getWidth() {
-        var bBox = this.svg.node().getBoundingClientRect();
-        return bBox.width;
     }
 }
 

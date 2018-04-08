@@ -1,12 +1,10 @@
 import * as d3 from "d3";
+import BaseChart from "./Basechart";
 
-class NumberLabel {
+class NumberLabel extends BaseChart{
     constructor(element, data, config) {
+        super(element, data, config);
         console.log("New sparkline numberLabel");
-
-        this.svg = element;
-        this.data = data;
-        this.config = config;
 
         let height = 16;
         this.scale =d3.scaleLinear()
@@ -30,15 +28,6 @@ class NumberLabel {
         .style("fill", this.color);
         
         this.svg.attr("transform", "translate(" + offset + "," + 0 + ")")
-    }
-
-    /**
-     * Return bound box size;
-     * @return {[type]} [description]
-     */
-    getWidth() {
-        var bBox = this.svg.node().getBoundingClientRect();
-        return bBox.width;
     }
 }
 
