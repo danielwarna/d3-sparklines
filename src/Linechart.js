@@ -24,7 +24,7 @@ class Linechart extends BaseChart {
             .data(this.data)
             .enter().append("svg:path")
             .attr("d", this.lineRender(this.data))
-            .style("stroke", "red")
+            .style("stroke", this.color)
             .style("fill", "none");
         
         this.svg.data(this.data);

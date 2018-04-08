@@ -24,7 +24,7 @@ class Barchart extends BaseChart{
                 .attr("height", this.heightFunc)
                 .attr("x", (d, i) => { return i*4;})
                 .attr("y", (d) => { return 0+this.config.height-this.scale(d);})
-                .style("fill", "red");
+                .style("fill", this.color);
 
         this.svg.data(this.data);
 
