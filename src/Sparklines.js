@@ -71,7 +71,8 @@ class Sparklines {
 
     optimizeSvgSize() {
         this.svg.attr("width", this.totalWidth + "px");
-        this.svg.attr("height", this.height + "px");
+        this.svg.attr("height", (this.height+1) + "px");
+        this.svg.attr("style", "transform:translate(0,1px)");
 
     }
 
