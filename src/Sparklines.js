@@ -13,8 +13,16 @@ class Sparklines {
         var elem = d3.select(selector);
 
         this.svg = elem.append("svg");
+        this.svg.attr("width", "0px");
+        this.svg.attr("height", "0px");
 
-        this.config.height = this.height = 16;
+        if (!this.config.height) {
+            let height = getComputedStyle(elem.node().parentNode).getPropertyValue("font-size");
+            this.config.height = Number(height.slice(0, -2));
+        }
+        
+        this.height = this.config.height
+
         this.config.renderer = config.renderer || "bar";
 
         let chartRenderer = this.getRenderer(this.config.renderer);
@@ -28,6 +36,7 @@ class Sparklines {
         console.log(this._renderers);
 
         this.render();
+        this.optimizeSvgSize();
     }
 
     setNumberRenderers() {
@@ -60,12 +69,20 @@ class Sparklines {
         }
     }
 
+    optimizeSvgSize() {
+        this.svg.attr("width", this.totalWidth + "px");
+        this.svg.attr("height", this.height + "px");
+
+    }
+
     render(){
         let offset = 0;
         this._renderers.forEach((r) => {
             r.render(offset);
             offset += r.getWidth();
         });
+
+        this.totalWidth = offset;
     }
 }
 

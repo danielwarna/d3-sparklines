@@ -6,13 +6,13 @@ class NumberLabel extends BaseChart{
         super(element, data, config);
         console.log("New sparkline numberLabel");
 
-        let height = 16;
+        let height = this.config.height || 16;
         this.scale =d3.scaleLinear()
             .domain([0, d3.max(data)])
             .range([0, height]);
 
         this.heightFunc = () => {
-            return height+"px";
+            return (height*0.9)+"px";
         };
     }
 
