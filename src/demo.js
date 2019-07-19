@@ -16,6 +16,11 @@ var spark_line = new Sparklines("#line", data, {
     height:68
 });
 
+var spark_line = new Sparklines("#scatter", data, {
+    renderer:"scatter",
+    height:68
+});
+
 var spark_inline_bar = new Sparklines("#bar-inline", data, {
     renderer:"bar",
 });

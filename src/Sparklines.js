@@ -2,6 +2,7 @@ import * as d3 from "d3";
 import Barchart from "./Barchart.js";
 import Linechart  from "./Linechart.js";
 import NumberLabel from "./NumberLabel";
+import ScatterPlot from "./Scatterplot";
 
 class Sparklines {
     constructor(selector, data, config) {
@@ -62,7 +63,7 @@ class Sparklines {
         case "number":
             return NumberLabel;
         case "scatter":
-            break;
+            return ScatterPlot
         }
     }
 
