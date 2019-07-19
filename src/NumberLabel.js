@@ -4,7 +4,7 @@ import BaseChart from "./Basechart";
 class NumberLabel extends BaseChart{
     constructor(element, data, config) {
         super(element, data, config);
-        console.log("New sparkline numberLabel");
+        // console.log("New sparkline numberLabel");
 
         let height = this.height = this.config.height || 16;
         this.scale =d3.scaleLinear()
@@ -13,6 +13,7 @@ class NumberLabel extends BaseChart{
 
         this.heightFunc = () => {
             return (height*0.9)+"px";
+            // return (height*0.9)+"px";
         };
     }
 
@@ -26,7 +27,7 @@ class NumberLabel extends BaseChart{
         .attr("font-family", "sans-serif")
         .text((d) => {return d} )
         .style("fill", this.color);
-        
+
         this.svg.attr("transform", "translate(" + offset + "," + 0 +")")
     }
 }

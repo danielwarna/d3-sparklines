@@ -7,7 +7,7 @@ class Sparklines {
     constructor(selector, data, config) {
         console.log("New sparkline");
 
-        this.data = data; 	
+        this.data = data;
         this.config = config;
         this._renderers = [];
         var elem = d3.select(selector);
@@ -20,8 +20,8 @@ class Sparklines {
             let height = getComputedStyle(elem.node().parentNode).getPropertyValue("font-size");
             this.config.height = Number(height.slice(0, -2));
         }
-        
-        this.height = this.config.height
+
+        this.height = this.config.height;
 
         this.config.renderer = config.renderer || "bar";
 
@@ -33,21 +33,18 @@ class Sparklines {
 
         this.setNumberRenderers();
 
-        console.log(this._renderers);
-
         this.render();
         this.optimizeSvgSize();
     }
 
     setNumberRenderers() {
         if (this._renderers.length < 1) {return }
-        
+
         let startNumberLabel = new NumberLabel(this.svg.append("g"), this.data[0], this.config);
         let endNumberLabel = new NumberLabel(this.svg.append("g"), this.data[this.data.length-1], this.config);
 
         this._renderers.unshift(startNumberLabel);
         this._renderers.push(endNumberLabel);
-        
     }
 
     loadChart() {

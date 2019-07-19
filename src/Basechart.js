@@ -5,6 +5,7 @@ class BaseChart {
         this.config = config;
 
         this.color = this.config.color || "#6ba8b4";
+        this.heightScale = this.config.heightscale || 0.7;
     }
 
     /**

@@ -10,7 +10,7 @@ class Barchart extends BaseChart{
         let height = config.height;
         this.scale =d3.scaleLinear()
             .domain([0, d3.max(data)])
-            .range([0, height]);
+            .range([0, height * this.heightScale]);
 
         this.heightFunc = (h) => {
             return this.scale(h)+"px";
@@ -29,7 +29,6 @@ class Barchart extends BaseChart{
         this.svg.data(this.data);
 
         this.svg.attr("transform", "translate(" + offset + "," + 0 + ")")
-
     }
 }
 
