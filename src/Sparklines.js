@@ -30,7 +30,6 @@ class Sparklines {
         chartRenderer = new chartRenderer(this.svg.append('g'), this.data, this.config);
 
         this._renderers.push(chartRenderer);
-        // this.loadChart();
 
         this.setNumberRenderers();
 
@@ -38,6 +37,9 @@ class Sparklines {
         this.optimizeSvgSize();
     }
 
+    /**
+     * Generate number renderers base don the config
+     */
     setNumberRenderers() {
         if (this._renderers.length < 1) {return }
 
@@ -48,12 +50,11 @@ class Sparklines {
         this._renderers.push(endNumberLabel);
     }
 
-    loadChart() {
-        if (this.config.type == "barchart") {
-            this.chart = new Barchart(this.svg, this.data, this.config);
-        }
-    }
-
+    /**
+     *
+     * @param {string} Renderer type
+     * @returns Renderer object
+     */
     getRenderer(renderer) {
         switch(renderer) {
         case "bar":
@@ -67,6 +68,9 @@ class Sparklines {
         }
     }
 
+    /**
+     * Set svg elemt size to match content
+     */
     optimizeSvgSize() {
         this.svg.attr("width", this.totalWidth + "px");
         this.svg.attr("height", (this.height+1) + "px");
@@ -74,6 +78,9 @@ class Sparklines {
 
     }
 
+    /**
+     * Render all components in this chart
+     */
     render(){
         let offset = 0;
         this._renderers.forEach((r) => {
