@@ -5,6 +5,7 @@ class BaseChart {
         this.config = config;
 
         this.color = this.config.color || "#6ba8b4";
+        this.accentcolor = this.config.accentcolor || "#4A7D69";
         this.heightScale = this.config.heightscale || 0.7;
     }
 
